@@ -44,18 +44,23 @@ def bin_byte_to_hex(bin_byte)
   bin_hex[bin_byte[0..3]] + bin_hex[bin_byte[4..7]]
 end
 
-def hex_xor(hex1, hex2)
-  bin1 = hex_byte_to_bin(hex1)
-  bin2 = hex_byte_to_bin(hex2)
+def bin_xor(bin1, bin2)
   xor_bin = ''
 
-  8.times do |i|
-    if bin1[i] == bin2[i]
+  bin1.each_char.with_index do |chr, idx|
+    if chr == bin2[idx]
       xor_bin += '0'
     else
       xor_bin += '1'
     end
   end
+  xor_bin
+end
 
-  bin_byte_to_hex(xor_bin)
+def hex_byte_xor(hex1, hex2)
+  bin1 = hex_byte_to_bin(hex1)
+  bin2 = hex_byte_to_bin(hex2)
+  binary = bin_xor(bin1, bin2)
+
+  bin_byte_to_hex(binary)
 end
