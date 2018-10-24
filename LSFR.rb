@@ -19,14 +19,11 @@ def lsfr_step_hex(current_hex, feedback_hex)
 end
 
 def next_lsfr_hex_key(current_hex)
-  # 8.times do
-  #   current_hex = lsfr_step(current_hex, feedback_hex)
-  # end
   current_hex[-2..-1]
 end
 
 def char_to_hex(char)
-  char.ord.to_s(16)
+  char.ord.to_s(16).upcase
 end
 
 def hex_to_char(hex)
