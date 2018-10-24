@@ -17,13 +17,31 @@ def lsfr_step_hex(current_hex, feedback_hex)
   end
 end
 
-def next_lsfr_hex_key(current_hex, feedback_hex)
-  8.times do
-    current_hex = lsfr_step(current_hex, feedback_hex)
-  end
+def next_lsfr_hex_key(current_hex)
+  # 8.times do
+  #   current_hex = lsfr_step(current_hex, feedback_hex)
+  # end
   current_hex[-2..-1]
 end
 
 def char_to_hex(char)
   char.ord.to_s(16)
+end
+
+def crypt(data, initial_value)
+  feedback_hex = '87654321'
+  output_string = ''
+  encrypting = data.split('\x').length == 1
+
+  data.each_char do |char|
+    8.times do
+      initial_value = lsfr_step_hex(initial_value, feedback_hex)
+    end
+
+    char_hex = char_to_hex(char)
+    key = next_lsfr_hex_key(initial_value)
+
+    output_string += ('\x' + hex_xor(char_hex, key))
+  end
+  output_string
 end
