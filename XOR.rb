@@ -1,4 +1,4 @@
-def hex_to_bin(input)
+def hex_byte_to_bin(hex_byte)
   hex_bin = {
     '0' => '0000',
     '1' => '0001',
@@ -17,9 +17,8 @@ def hex_to_bin(input)
     'e' => '1110',
     'f' => '1111',
   }
-  hex = input.is_a?(String) ? input : input.to_s(16)
 
-  hex_bin[hex[0]] + hex_bin[hex[1]]
+  hex_bin[hex_byte[0]] + hex_bin[hex_byte[1]]
 end
 
 def bin_byte_to_hex(bin_byte)
@@ -43,4 +42,20 @@ def bin_byte_to_hex(bin_byte)
   }
 
   bin_hex[bin_byte[0..3]] + bin_hex[bin_byte[4..7]]
+end
+
+def hex_xor(hex1, hex2)
+  bin1 = hex_byte_to_bin(hex1)
+  bin2 = hex_byte_to_bin(hex2)
+  xor_bin = ''
+
+  8.times do |i|
+    if bin1[i] == bin2[i]
+      xor_bin += '0'
+    else
+      xor_bin += '1'
+    end
+  end
+
+  bin_byte_to_hex(xor_bin)
 end
