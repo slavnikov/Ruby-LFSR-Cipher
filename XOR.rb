@@ -44,8 +44,12 @@ def bin_byte_to_hex(bin_byte)
     '1110' => 'e',
     '1111' => 'f',
   }
+  hexidecimal_output = ''
 
-  bin_hex[bin_byte[0..3]] + bin_hex[bin_byte[4..7]]
+  (bin_byte.length / 4).times do |idx|
+    hexidecimal_output += bin_hex[bin_byte[idx * 4 ... (idx + 1) * 4]]
+  end
+  hexidecimal_output
 end
 
 def bin_xor(bin1, bin2)
