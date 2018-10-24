@@ -31,6 +31,7 @@ end
 
 def crypt(data, initial_value)
   feedback_hex = '87654321'
+  initial_value = initial_value.to_s(16).upcase
   output_string = ''
   encrypting = data.split('\x').length == 1
   data = encrypting ? data.split('') : data.split('\x')[1..-1]
