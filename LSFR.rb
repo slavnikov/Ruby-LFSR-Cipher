@@ -1,4 +1,5 @@
 require_relative 'XOR'
+require 'byebug'
 
 def right_shift_hex(hex, offset)
   binary = hex_to_bin(hex)
@@ -28,20 +29,29 @@ def char_to_hex(char)
   char.ord.to_s(16)
 end
 
+def hex_to_char(hex)
+  hex.to_i(16).chr
+end
+
 def crypt(data, initial_value)
   feedback_hex = '87654321'
   output_string = ''
   encrypting = data.split('\x').length == 1
+  data = encrypting ? data.split('') : data.split('\x')[1..-1]
 
-  data.each_char do |char|
+  data.each do |ele|
     8.times do
       initial_value = lsfr_step_hex(initial_value, feedback_hex)
     end
 
-    char_hex = char_to_hex(char)
+    ele_hex = encrypting ? char_to_hex(ele) : ele
     key = next_lsfr_hex_key(initial_value)
 
-    output_string += ('\x' + hex_xor(char_hex, key))
+    if encrypting
+      output_string += ('\x' + hex_xor(ele_hex, key))
+    else
+      output_string += hex_to_char(hex_xor(ele_hex, key))
+    end
   end
   output_string
 end
