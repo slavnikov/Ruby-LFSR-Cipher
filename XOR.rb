@@ -25,7 +25,7 @@ def hex_to_bin(hex)
   binary_output
 end
 
-def bin_byte_to_hex(bin_byte)
+def bin_to_hex(bin_byte)
   bin_hex = {
     '0000' => '0',
     '0001' => '1',
@@ -65,10 +65,10 @@ def bin_xor(bin1, bin2)
   xor_bin
 end
 
-def hex_byte_xor(hex1, hex2)
-  bin1 = hex_byte_to_bin(hex1)
-  bin2 = hex_byte_to_bin(hex2)
+def hex_xor(hex1, hex2)
+  bin1 = hex_to_bin(hex1)
+  bin2 = hex_to_bin(hex2)
   binary = bin_xor(bin1, bin2)
 
-  bin_byte_to_hex(binary)
+  bin_to_hex(binary)
 end
