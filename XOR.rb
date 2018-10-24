@@ -1,5 +1,3 @@
-require 'byebug'
-
 def hex_to_bin(hex)
   hex_bin = {
     '0' => '0000',
