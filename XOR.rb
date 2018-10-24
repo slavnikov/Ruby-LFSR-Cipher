@@ -1,4 +1,4 @@
-def hex_byte_to_bin(hex_byte)
+def hex_to_bin(hex)
   hex_bin = {
     '0' => '0000',
     '1' => '0001',
@@ -17,8 +17,12 @@ def hex_byte_to_bin(hex_byte)
     'e' => '1110',
     'f' => '1111',
   }
+  binary_output = '';
 
-  hex_bin[hex_byte[0]] + hex_bin[hex_byte[1]]
+  hex.each_char do |char|
+    binary_output += hex_bin[char]
+  end
+  binary_output
 end
 
 def bin_byte_to_hex(bin_byte)
