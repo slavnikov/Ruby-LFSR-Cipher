@@ -66,8 +66,8 @@ def bin_xor(bin1, bin2)
 end
 
 def hex_xor(hex1, hex2)
-  bin1 = hex_to_bin(hex1)
-  bin2 = hex_to_bin(hex2)
+  bin1 = hex_to_bin(hex1.upcase)
+  bin2 = hex_to_bin(hex2.upcase)
   binary = bin_xor(bin1, bin2)
 
   bin_to_hex(binary)

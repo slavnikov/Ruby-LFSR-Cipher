@@ -1,5 +1,4 @@
 require_relative 'XOR'
-require 'byebug'
 
 def right_shift_hex(hex, offset)
   binary = hex_to_bin(hex)
