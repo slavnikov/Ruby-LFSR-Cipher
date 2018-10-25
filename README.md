@@ -15,7 +15,7 @@ hex_xor('31bda77c', 'ff59001a') # => "CEE4A766"
 ```
 
 ### crypt(data, initial_value)
-Accepts a string to be encoded an hexadecimal integer value to serve as the starting key. Will also decrypt an encrypted string into its original form if given the same key.
+Accepts a string to be encoded an hexadecimal integer value to serve as the starting key. Will also decrypt an encrypted string into its original form if given the same key. Note the escape characters necessary to add the non-renderable characters (e.g. "\xE7"). These are considered single characters in Ruby but have no render value assigned in ASCII.
 
 ```Ruby
 crypt('Apple Jacks', 0x31bda77c) # => "*}B\xE7j\xAD\x18x\xA6\xF7<"
