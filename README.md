@@ -7,7 +7,7 @@ A more advanced take on the XOR ciphering method is one that employs Linear Feed
 The two included files are intended as a breakdown of the XOR LFSR cipher technique. While both the register shift and XOR functions are available in Ruby (>> and ^ respectively), they are implemented by hand to make it easier to understand the actual function of each.
 
 ### hex_xor(hex1, hex2)
-Accepts two hexadecimals as strings. Returns a hexadecial stirng. Analagous to ^ Ruby method.
+Accepts two hexadecimals as strings. Returns a hexadecimal string. Analogous to ^ Ruby method.
 ```Ruby
 hex_xor('31bda77c', 'ff59001a') # => "CEE4A766"
 #Ruby method
